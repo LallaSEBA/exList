@@ -1,7 +1,8 @@
 
 import '../widgets/textfield.dart';
-import '../controller/databaseHelper.dart';
-import '../model/product.dart';
+import '../widgets/drawer.dart';
+
+
 import '../myProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ TextEditingController c_mesure=TextEditingController();*/
 double radius1=31;
 double radius2=30;
 double cangle=45;
+int selectedite=0;
 //int  _chosenValue=1;
 
 class Home extends StatefulWidget{
@@ -26,6 +28,11 @@ class Home extends StatefulWidget{
 
 class _HomeState extends State<Home> {
   @override
+  onItemtap(int index){
+    setState(() {
+      selectedite=index;
+    });
+  }
   void initState() {
      super.initState();
      final prdList = Provider.of<Myprovider>(context, listen: false);
@@ -39,17 +46,19 @@ class _HomeState extends State<Home> {
   double twidth1=MediaQuery.of(context).size.width*.37;
   double twidth2=MediaQuery.of(context).size.width*.50;
   double twidth3=MediaQuery.of(context).size.width*.25;
-  double twidth4=MediaQuery.of(context).size.width*.913;
-  double boxheight=MediaQuery.of(context).size.height*.35;
+  //double twidth4=MediaQuery.of(context).size.width*.913;
+  //double boxheight=MediaQuery.of(context).size.height*.35;
   double margin1=MediaQuery.of(context).size.height*.02;
   double margin2=MediaQuery.of(context).size.height*.032;
   double margin3=MediaQuery.of(context).size.height*.032;
   double bwidth=MediaQuery.of(context).size.width*.3901;
   double bheight=MediaQuery.of(context).size.height*.06;
-  double screenWdth = MediaQuery.of(context).size.width/3;
+  //double screenWdth = MediaQuery.of(context).size.width/3;
+  double dvd_endent= MediaQuery.of(context).size.width*.10;
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
+        drawer: myDrawer(context),
+       /* Drawer(
 
           child: Container(
 
@@ -68,16 +77,22 @@ class _HomeState extends State<Home> {
               ),
             )
           ),
-        ),
+        ),*/
         backgroundColor: white,
        body: Column(
          children: [
            Container(
            //  height: boxheight,
+
              decoration: BoxDecoration(
-               color: backgroundgren,
+
+               boxShadow: [BoxShadow(
+                 color: Colors.black.withOpacity(0.4),
+                 blurRadius: 20,
+               )],
+               color: ctn_color,
                borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(cangle))
+                bottomLeft: Radius.circular(cangle), bottomRight: Radius.circular(cangle))
              ),
              child: Column(
               // crossAxisAlignment: CrossAxisAlignment.center,
@@ -137,7 +152,7 @@ class _HomeState extends State<Home> {
                          Provider.of<Myprovider>(context,listen: false).scanQR();
                    },
                       child:Text(str_scan,style: TextStyle(
-                       fontSize: 24,color: bcolor ))
+                       fontSize: 24,color: txt_color ))
                      ),
                    ),
                      Container(
@@ -157,7 +172,7 @@ class _HomeState extends State<Home> {
                          Provider.of<Myprovider>(context,listen: false).add();
                        },
                        child: Text(str_add,style: TextStyle(
-                         fontSize: 24,color: bcolor                     ),),
+                         fontSize: 24,color: txt_color                     ),),
                      ),
                    ),
                  ],
@@ -167,7 +182,10 @@ class _HomeState extends State<Home> {
              ),
            ),
            Expanded(
-            child:ListView.builder(
+             child:Container(
+               margin: EdgeInsets.only(top: 25),
+            child:(Provider.of<Myprovider>(context,listen: true).listProduct.isNotEmpty)?
+            ListView.builder(
               itemCount: Provider.of<Myprovider>(context,listen: true).listProduct.length,
               itemBuilder: ((BuildContext context,int index){
                 return Slidable(
@@ -175,62 +193,73 @@ class _HomeState extends State<Home> {
                 actionExtentRatio: 0.25,
                 secondaryActions: <Widget>[
                 IconSlideAction(
-                caption: 'Delete',
-                color: ((index%2)==0)?gren:white,
-                icon: Icons.delete,foregroundColor:  ((index%2)==0)?white:gren,
+                caption: '',
+                color: white,
+                icon: Icons.delete,foregroundColor:  txt_color,
                 onTap: (){
                          Provider.of<Myprovider>(context,listen: false).delete(index);
+                        // Provider.of<Myprovider>(context,listen: true).listProduct.removeAt(index);
                 },
                 ),
 
                 ],
-                  child:Container(
-                  color: ((index%2)==0)?gren:white,
+
                   child: Container(
 
                       height: MediaQuery.of(context).size.height*.13,
                       decoration: BoxDecoration(
-                          color: ((index%2)==0)?white:gren,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(cangle))
+                          color: white,
+                         /* borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(cangle))*/
                       ),
-                      child:Row(
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
 
-                            margin:EdgeInsets.only(left: margin3),
-                            child: CircleAvatar(
-                              backgroundColor:backgroundgren,
-                              radius: radius1,
-                              child: CircleAvatar(
-                                backgroundColor:Colors.white,
-                                radius: radius2,
-                                child: Text('${index+1}',style: TextStyle(color: backgroundgren),),
-                              ),),),
-                          Container(
-                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*.032),
-                            child: Text('${Provider.of<Myprovider>(context).listProduct[index].name}  ',style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18
-                            ),),),
-                          Container(
-                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*.032),
-                            child: Text('${Provider.of<Myprovider>(context).listProduct[index].price} ',style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18
-                            )),),
-                          Container(  margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*.032),
-                            child:  Text(' ${Provider.of<Myprovider>(context).listProduct[index].quantity}',style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18
-                            )),),
+                                margin:EdgeInsets.only(left: margin3),
+                                child: CircleAvatar(
+                                  backgroundColor:circ_color,
+                                  radius: radius1,
+                                  child: CircleAvatar(
+                                    backgroundColor:Colors.white,
+                                    radius: radius2,
+                                    child: Text('${index+1}',style: TextStyle(color: ctn_color),),
+                                  ),),),
+                              Container(
+                                margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*.032),
+                                child: Text('${Provider.of<Myprovider>(context).listProduct[index].name}  ',style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18
+                                ),),),
+                              Container(
+                                margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*.032),
+                                child: IconButton(
+                                  icon:Image.asset('assets/images/arrow.png',scale: 1.5,) ,
+                                  onPressed:  (){},
+                                ),),
 
+
+                            ],
+                          ),
+                          Divider(
+                            //color: gren,
+                            height: 27,
+                            endIndent:dvd_endent ,
+                            indent: dvd_endent,
+                          )
                         ],
-                      )
-                  ),));
+                      ),
+                  ),);
               }),
 
-            )
+            ):
+                Center(
+                  child: Image.asset('assets/images/empty.png'),
+                ))
 
 
 
@@ -240,6 +269,18 @@ class _HomeState extends State<Home> {
 
          ],
        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+
+            BottomNavigationBarItem(icon: Icon(Icons.home_rounded),label: 'home'),
+            BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp),label: 'Profile'),
+            BottomNavigationBarItem(icon: Icon(Icons.settings),label: 'Setting'),
+            
+          ],
+          currentIndex:  selectedite,
+          selectedItemColor: ctn_color,
+          onTap: onItemtap,
+        ),
    ),
     );
 

@@ -9,6 +9,10 @@ Color tBorder2=Color(0xFF80E1D1);
 Color tHint1=Colors.white;
 Color tHint2=Color(0xFF80E1D1);
 Color circlecolor=Color(0xFF80E1D1);
+Color ctn_color=Color(0xff64ACE4);
+Color txt_color=Color(0xff2B4D66);
+Color circ_color=Color(0xff4a80aa);
+
 ///////////////////////////////////
 String str_login="Login";
 String str_register="Register";

@@ -12,9 +12,11 @@ Widget tfield(context,TextEditingController txtedit, Icon icon,String hint,doubl
       decoration: InputDecoration(
           prefixIcon:icon ,
           hintText: hint,
-         
+         contentPadding: EdgeInsets.all(0),
+
           hintStyle:TextStyle(
             color: tHint1,
+
           ) ,
           focusedBorder: OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(25.0)),

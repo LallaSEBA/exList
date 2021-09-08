@@ -144,14 +144,14 @@ class Myprovider with ChangeNotifier {
     catch (e) {
        this.c_id.text = 'Unknown error: $e';
     }
-  }  
+  }
+  void expandContainer(int index){
+
+       listProduct[index].slide=!listProduct[index].slide;
+       notifyListeners();
+
+  }
 }
 
 
 
-/* dependency: "direct main"
-    description:
-      name: path
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.8.0"*/

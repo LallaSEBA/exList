@@ -9,6 +9,7 @@ class Product{
   double height;
   double width;
   double length;
+  bool slide=false;
   //String mesure;
   
   Product(this.name,this.id, this.reference, this.price,this.quantity, this.length, this.width, this.height,);

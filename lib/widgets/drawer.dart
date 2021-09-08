@@ -2,13 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget myDrawer(context){
-  return Drawer(
-    child: Column(
+  return
+
+    Container(
+      width: MediaQuery.of(context).size.width*0.5,
+     child:Drawer(
+       child: Column(
      // mainAxisAlignment: MainAxisAlignment.spaceAround,
      // crossAxisAlignment: CrossAxisAlignment.s,
       children: [
         Container(
-          margin: EdgeInsets.only(bottom:45),
+          margin: EdgeInsets.only(bottom:45,top: 32),
           child: Image.asset('assets/images/profile.png',scale: 5,),
         ),
 
@@ -65,5 +69,5 @@ Widget myDrawer(context){
         ),
       ],
     ),
-  );
+     ));
 }

@@ -52,18 +52,19 @@ Widget tfield2(context,TextEditingController cont,String hint,double margin){
       decoration: InputDecoration(
       hintText:hint,
       hintStyle: TextStyle(
-        color: gren,
+        color: ctn_color,
       ),
+          contentPadding: EdgeInsets.symmetric(vertical:0,horizontal: 0),
       focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(corner)),
       borderSide: BorderSide(
-      color:tBorder2,
+      color:circ_color,
      width: thick,
      ),),
      enabledBorder: OutlineInputBorder(
      borderRadius: BorderRadius.all(Radius.circular(corner)),
       borderSide: BorderSide(
-     color:tBorder2,
+     color:circ_color,
       width: thick,
          ),
 

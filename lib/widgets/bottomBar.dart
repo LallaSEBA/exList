@@ -13,6 +13,11 @@ class BottomState extends State<BottomNavBar>{
     setState(() {
       selectedite=index;
     });
+    switch (index){
+      case 0:print('hhhh');break;
+      case 1:Navigator.of(context).pushNamed('/home');break;
+      case 2:Scaffold.of(context).openEndDrawer();break;
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -23,8 +28,8 @@ class BottomState extends State<BottomNavBar>{
         items: <BottomNavigationBarItem>[
 
           BottomNavigationBarItem(icon: Icon(Icons.home_rounded),label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp),label: 'Profile'),
           BottomNavigationBarItem(icon: Icon(Icons.settings),label: 'Setting'),
+          BottomNavigationBarItem(icon: Icon(Icons.article_rounded),label: 'drawer'),
 
         ],
         currentIndex:  selectedite,

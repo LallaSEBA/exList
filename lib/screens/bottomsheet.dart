@@ -44,7 +44,8 @@ class btnstate extends State<btn> {
               Container(
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.width * .45),
-                child: Image.asset(url_image_logo, scale: 8),
+                child: Image.asset(url_image_logo, scale:1
+                ),
               ),
               Container(
                   margin: EdgeInsets.only(top: 60),
@@ -52,7 +53,7 @@ class btnstate extends State<btn> {
                   width: bwidth,
                   child: RaisedButton(
                     elevation: 0.0,
-                    color: Color(0xFF80E1D1),
+                    color: ctn_color,
                     shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30)),
                     child: Text(
@@ -79,13 +80,13 @@ class btnstate extends State<btn> {
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30),
-                        side: BorderSide(color: Color(0xFF80E1D1), width: 3)),
+                        side: BorderSide(color: ctn_color, width: 3)),
                     child: Text(
                       str_register,
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        color: gren,
+                        color: ctn_color,
                       ),
                     ),
                     onPressed: () {
@@ -126,7 +127,7 @@ class bottomsheetstate extends State<bottomsheet> {
       DecoratedBox(
 
         //color:Colors.redAccent,
-      decoration: BoxDecoration(color: backgroundgren),
+      decoration: BoxDecoration(color: back_color),
       child: ClipRRect(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.0), topRight: Radius.circular(100.0)),
@@ -171,7 +172,7 @@ class bottomsheetstate extends State<bottomsheet> {
                         radius:65,
                         child:Align(
                           alignment: Alignment.center,
-                          child:Image.asset(url_image_profile,scale: 5,),
+                          child:Image.asset(url_image_profile,scale: 4,),
                           ),
                         )
                       ),
@@ -196,7 +197,7 @@ class bottomsheetstate extends State<bottomsheet> {
                           style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.bold,
-                            color: gren,
+                            color: txt_color,
                           ),
                         ),
                         onPressed: (){
@@ -216,7 +217,7 @@ class bottomsheetstate extends State<bottomsheet> {
                           radius:65,
                           child:Align(
                             alignment: Alignment.center,
-                            child:Image.asset('assets/images/acc.png',scale: 5,),
+                            child:Image.asset('assets/images/profile.png',scale: 4,),
                           ),
                         )
                     ),
@@ -237,7 +238,7 @@ class bottomsheetstate extends State<bottomsheet> {
                           style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.bold,
-                            color: gren,
+                            color: txt_color,
                           ),
                         ),
                         onPressed: (){

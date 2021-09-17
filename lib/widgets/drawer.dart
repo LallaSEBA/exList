@@ -63,7 +63,7 @@ Widget myDrawer(context){
             children: [
 
               TextButton(onPressed: (){}, child: Text('Log out')),
-              Image.asset('assets/images/solid.png',scale: 2,),
+              Image.asset('assets/images/Solid.png',scale: 2,),
             ],
           ),
         ),

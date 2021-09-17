@@ -363,8 +363,12 @@ class _HomeState extends State<Home> {
                                               mainAxisAlignment:MainAxisAlignment.spaceAround,
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
-                                                Text('Id: ${Provider.of<Myprovider>(context, listen: false).listProduct[index].id}'),
-                                                Text('Ref:${Provider.of<Myprovider>(context, listen: false).listProduct[index].reference}'),
+                                                Text('ID: ${Provider.of<Myprovider>(context, listen: false).listProduct[index].id}',style:TextStyle(
+                                                  fontSize: 19
+                                                )),
+                                                Text('Ref:${Provider.of<Myprovider>(context, listen: false).listProduct[index].reference}',style:TextStyle(
+                                                    fontSize: 19
+                                                )),
 
                                               ],
                                             ),

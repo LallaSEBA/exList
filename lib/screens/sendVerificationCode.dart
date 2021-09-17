@@ -18,7 +18,7 @@ class sendvericationstate extends State<sendverication>{
   double space_3;
   @override
   Widget build(BuildContext context) {
-    radius=MediaQuery.of(context).size.width*.30;
+    radius=MediaQuery.of(context).size.width*.24;
     space_1=MediaQuery.of(context).size.height*.10;
     space_2=MediaQuery.of(context).size.height*.10;
     space_3=MediaQuery.of(context).size.height*.03;
@@ -34,7 +34,7 @@ return Scaffold(
       onPressed: (){
         Navigator.of(context).pushNamed('/home');
       },
-      icon: Icon(Icons.arrow_back,color: bcolor,size:30),
+      icon: Icon(Icons.arrow_back,color: circ_color,size:30),
     ),
   ),
   body: SingleChildScrollView(
@@ -45,25 +45,29 @@ return Scaffold(
           children:[
             Container(
               margin: EdgeInsets.only(top: 45),
-              child: Text('$str_forogtparagraph1 \n $str_forogtparagraph2'),
+              child: Text('$str_forogtparagraph1 \n $str_forogtparagraph2'
+              ,style:TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300
+                  )),
             ),
         Container(
           margin: EdgeInsets.only(top:space_1 ),
           child: CircleAvatar(
           radius: radius,
-            backgroundColor: gren,
-            child: Image.asset(url_image_mail,scale: 1,),
+            backgroundColor: backcolor,
+            child: Image.asset(url_image_mail,scale: 3,),
           ),
         ),
 
-        tfield2(context,code,'Code',space_2),
+        tfield2(context,code,'Email',space_2),
         Container(
           margin: EdgeInsets.only(top:space_3 ),
           width:bwith ,
           height: bheight,
           child: RaisedButton(
             elevation: 0.0,
-            color: gren,
+            color: circ_color,
             shape: RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30),
                 //side: BorderSide(color: white, width: 3)),
